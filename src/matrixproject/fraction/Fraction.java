@@ -149,6 +149,30 @@ public class Fraction {
         return result;
     }
     
+    public void simplify()
+    {
+        int gcd = 0;
+        while(gcd != 1)
+        {
+            gcd = gcd(this.numerator, this.denominator);
+            this.setNumerator(this.numerator/gcd);
+            this.setDenominator(this.denominator/gcd);
+        }
+    }
+
+    public int gcd(int a, int b)
+    {
+        int gcd;
+        gcd = a % b;
+        while(gcd != 0)
+        {
+            a = b;
+            b = gcd;
+            gcd = a % b;
+        }
+        return b;
+    }
+    
     /**
      * ToString method
      * @return String that represents the fraction
