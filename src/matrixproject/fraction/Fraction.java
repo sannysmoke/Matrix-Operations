@@ -169,7 +169,7 @@ public class Fraction {
      * @param b Secondo int
      * @return Return the gcd between @param a and @param b
      */
-    public int gcd(int a, int b)
+    private int gcd(int a, int b)
     {
         int gcd;
         gcd = a % b;
