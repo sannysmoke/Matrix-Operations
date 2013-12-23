@@ -149,6 +149,9 @@ public class Fraction {
         return result;
     }
     
+    /**
+     * Method to simplify a fraction
+     */
     public void simplify()
     {
         int gcd = 0;
@@ -160,6 +163,12 @@ public class Fraction {
         }
     }
 
+    /**
+     * Method that return the gcd between two numbers
+     * @param a First int
+     * @param b Secondo int
+     * @return Return the gcd between @param a and @param b
+     */
     public int gcd(int a, int b)
     {
         int gcd;
