@@ -19,6 +19,10 @@ public class Test {
         System.out.println(fraction1.mul(fraction2).toString());
         System.out.println();
         System.out.println(fraction1.div(fraction2).toString());
+        System.out.println();
+        Fraction sim = new Fraction(12, 4);
+        sim.simplify();
+        System.out.println(sim.toString());
     }
     
 }
