@@ -23,6 +23,10 @@ public class Test {
         Fraction sim = new Fraction(12, 4);
         sim.simplify();
         System.out.println(sim.toString());
+        System.out.println();
+        Fraction sim2 = new Fraction(1, 4);
+        sim2.simplify();
+        System.out.println(sim2.toString());
     }
     
 }
