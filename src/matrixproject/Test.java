@@ -12,6 +12,8 @@ public class Test {
     {
         Fraction fraction1 = new Fraction(1, 2);
         Fraction fraction2 = new Fraction(1, 2);
+
+        System.out.println("1/2 is: " + fraction1.getFloatValue());
         
         Fraction sum = fraction1.sum(fraction2);
         sum.simplify();

@@ -164,6 +164,13 @@ public class Fraction {
     }
 
     /**
+     * Method to get float value of this fraction.
+     */
+    public float getFloatValue() {
+        return (float)this.numerator / (float)this.denominator;
+    }
+
+    /**
      * Method that return the gcd between two numbers
      * @param a First int
      * @param b Secondo int
