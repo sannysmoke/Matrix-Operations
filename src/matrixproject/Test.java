@@ -5,6 +5,7 @@
 package matrixproject;
 
 import matrixproject.fraction.Fraction;
+import matrixproject.matrix.Matrix;
 
 public class Test {
     
@@ -30,6 +31,12 @@ public class Test {
         Fraction sim2 = new Fraction(1, 4);
         sim2.simplify();
         System.out.println(sim2.toString());
+        
+        System.out.println("----- Matrix Test -----");
+        Matrix matrix = new Matrix(4, 4, true);
+        System.out.println(matrix.toString());
+        System.out.println();
+        System.out.println(matrix.toStringFloat());
     }
     
 }
