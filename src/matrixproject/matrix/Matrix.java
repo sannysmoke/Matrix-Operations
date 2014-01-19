@@ -54,6 +54,25 @@ public class Matrix {
             }            
         }
     }
+    
+    /**
+     * Returns the sum of this matrix with another one.
+     * Matrices rows and columns dimensions must be the same.
+     * @param m Other matrix object.
+     * @return Matrix object rapresenting sum between the two matrices.
+     */
+    public Matrix sum(Matrix m) {
+        //Validation
+        if(this.row != m.row || this.col != m.col)
+            throw new IllegalArgumentException("Matrices rows and columns dimensions must be the same.");
+
+        Fraction[][] sum_matrix = new Fraction[row][col];
+        for(int row_counter = 0; row_counter < row; row_counter++)
+            for(int col_counter = 0; col_counter < col; col_counter++)
+                sum_matrix[row_counter][col_counter] = this.matrix[row_counter][col_counter].sum(m.matrix[row_counter][col_counter]);
+
+        return new Matrix(sum_matrix);
+    }
 
     /**
      * ToString method
