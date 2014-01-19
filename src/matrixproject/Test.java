@@ -63,6 +63,10 @@ public class Test {
         
         System.out.println("Sum is:");
         System.out.println(a.sum(b));
+        
+        //Equals test.
+        System.out.println("Equals: " + new_matrix.equals(new_matrix));
+        System.out.println("Equals: " + a.equals(b));
     }
     
 }

@@ -5,6 +5,7 @@
  */
 package matrixproject.matrix;
 
+import java.util.Arrays;
 import matrixproject.fraction.Fraction;
 
 public class Matrix {
@@ -73,7 +74,30 @@ public class Matrix {
 
         return new Matrix(sum_matrix);
     }
-
+    
+    /**
+     * Checks if two Matrix objects are equals.
+     * It uses Fraction object equals method, that return true when the simplified version of the fraction is the same,
+     * so it's not a strict confrontation between numerator and denominator.
+     * @param o Other Matrix object to check.
+     * @return true if the objects are equals, false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Matrix))
+            return false;
+        
+        Matrix m = (Matrix)o;
+        boolean value = true;
+        if(this.row != m.row || this.col != m.col)
+            value = false;
+        for(int row_counter = 0; row_counter < m.row && value; row_counter++)
+            for(int col_counter = 0; col_counter < m.col && value; col_counter++)
+                if(!this.matrix[row_counter][col_counter].equals(m.matrix[row_counter][col_counter]))
+                    value = false;
+        return value;
+    }
+    
     /**
      * ToString method
      * @return String that represents the matrix

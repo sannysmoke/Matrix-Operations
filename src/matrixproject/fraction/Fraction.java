@@ -190,6 +190,34 @@ public class Fraction {
     }
     
     /**
+     * Clones this Fraction object.
+     * @return A Fraction object, with same numerator and denominator.
+     */
+    @Override
+    public Object clone() {
+        return new Fraction(this.numerator, this.denominator);
+    }
+    
+    /**
+     * Checks if two Fraction objects are equals.
+     * It returns true when the simplified version of both fractions have same numerator and denominator.
+     * @param o Other Fraction object to check.
+     * @return true if the objects are equals, false otherwise.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if(!(o instanceof Fraction))
+            return false;
+        
+        Fraction f = (Fraction) o;
+        Fraction f1 = (Fraction)this.clone();
+        Fraction f2 = (Fraction)f.clone();
+        f1.simplify();
+        f2.simplify();
+        return f1.numerator == f2.numerator && f1.denominator == f2.denominator;
+    }
+    
+    /**
      * ToString method
      * @return String that represents the fraction
      */
