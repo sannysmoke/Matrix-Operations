@@ -14,6 +14,24 @@ public class Matrix {
     private Fraction[][] matrix;
     
     /**
+     * Constructor. Creates a Matrix object given a Fraction array of arrays.
+     * @param matrix This is the Fraction matrix. Every row must be same size with each other.
+     */
+    public Matrix(Fraction[][] matrix) {
+        this.row = matrix.length;
+        for(int counter = 0; counter < matrix.length; counter++) {
+            if (counter == 0) {
+                this.col = matrix[counter].length;
+            }
+            else {
+                if(matrix[counter].length != this.col)
+                    throw new IllegalArgumentException("Rows size is not the same for every row.");
+            }
+        }
+        this.matrix = matrix;
+    }
+    
+    /**
      * Constructor
      * @param row The number of rows
      * @param col The number of columns

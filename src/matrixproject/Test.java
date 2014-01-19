@@ -11,6 +11,17 @@ public class Test {
     
     public static void main(String[] args)
     {
+        //New constructor test.
+        Fraction[] row1 = {new Fraction(1,1), new Fraction(1,2), new Fraction(1,3)};
+        Fraction[] row2 = {new Fraction(2,1), new Fraction(2,2), new Fraction(2,3)};
+        Fraction[] row3 = {new Fraction(3,1), new Fraction(3,2), new Fraction(3,3)};
+        Fraction[][] complete = { row1, row2, row3 };
+        
+        Matrix new_matrix = new Matrix(complete);
+        System.out.println(new_matrix.toString());
+        
+        //Old test
+        
         Fraction fraction1 = new Fraction(1, 2);
         Fraction fraction2 = new Fraction(1, 2);
 
