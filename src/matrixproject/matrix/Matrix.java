@@ -76,6 +76,14 @@ public class Matrix {
     }
     
     /**
+     * Checks if this matrix is square (row dimension equals to column dimension).
+     * @return true if matrix is square, false otherwise.
+     */
+    public boolean square() {
+        return this.row == this.col;
+    }
+    
+    /**
      * Checks if two Matrix objects are equals.
      * It uses Fraction object equals method, that return true when the simplified version of the fraction is the same,
      * so it's not a strict confrontation between numerator and denominator.
