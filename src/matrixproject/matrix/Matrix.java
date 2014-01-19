@@ -5,13 +5,20 @@
  */
 package matrixproject.matrix;
 
-import java.util.Arrays;
 import matrixproject.fraction.Fraction;
 
 public class Matrix {
     
+    /*
+     * Number of rows. In R^(m*n) it is m value.
+     * */
     private int row;
+    
+    /*
+     * Number of columns. In R^(m*n) it is n value.
+     * */
     private int col;
+    
     private Fraction[][] matrix;
     
     /**
@@ -73,6 +80,55 @@ public class Matrix {
                 sum_matrix[row_counter][col_counter] = this.matrix[row_counter][col_counter].sum(m.matrix[row_counter][col_counter]);
 
         return new Matrix(sum_matrix);
+    }
+    
+    /**
+     * Multiplies an integer value to this matrix.
+     * Every component will be simplified.
+     * @param value int value
+     * @return matrix object, with value multiplied to each matrix component.
+     */
+    public Matrix mul(int value) {
+        return mul(value, true);
+    }
+    
+    /**
+     * Multiplies a Fraction object to this matrix.
+     * Every component will be simplified.
+     * @param value Fraction object
+     * @return matrix object, with value multiplied to each matrix component.
+     */
+    public Matrix mul(Fraction value) {
+        return mul(value, true);
+    }
+    
+    /**
+     * Multiplies an integer value to this matrix.
+     * @param value int value
+     * @param simplify if true every component will be simplified after mul operation.
+     * @return matrix object, with value multiplied to each matrix component.
+     */
+    public Matrix mul(int value, boolean simplify) {
+        return mul(new Fraction(value, 1), simplify);
+    }
+    
+    /**
+     * Multiplies a Fraction object to this matrix.
+     * @param value Fraction object
+     * @param simplify if true every component will be simplified after mul operation.
+     * @return matrix object, with value multiplied to each matrix component.
+     */
+    public Matrix mul(Fraction value, boolean simplify) {
+        Fraction [][] mul_matrix = new Fraction[row][col];
+        for(int row_counter = 0; row_counter < row; row_counter++)
+            for(int col_counter = 0; col_counter < col; col_counter++) {
+                Fraction f = value.mul(this.matrix[row_counter][col_counter]);
+                if(simplify)
+                    f.simplify();
+                mul_matrix[row_counter][col_counter] = f;
+            }
+                
+        return new Matrix(mul_matrix);
     }
     
     /**

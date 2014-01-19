@@ -67,6 +67,9 @@ public class Test {
         //Equals test.
         System.out.println("Equals: " + new_matrix.equals(new_matrix));
         System.out.println("Equals: " + a.equals(b));
+        
+        //Mul test.
+        System.out.println("Mul:\n" + new_matrix.mul(2));
     }
     
 }
