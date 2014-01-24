@@ -113,6 +113,25 @@ public class Matrix {
     }
     
     /**
+     * Multiplies a Fraction object to this matrix.
+     * @param value Fraction object
+     * @param simplify if true every component will be simplified after mul operation.
+     * @return matrix object, with value multiplied to each matrix component.
+     */
+    public Matrix mul(Fraction value, boolean simplify) {
+        Fraction [][] mul_matrix = new Fraction[row][col];
+        for(int row_counter = 0; row_counter < row; row_counter++)
+            for(int col_counter = 0; col_counter < col; col_counter++) {
+                Fraction f = value.mul(this.matrix[row_counter][col_counter]);
+                if(simplify)
+                    f.simplify();
+                mul_matrix[row_counter][col_counter] = f;
+            }
+                
+        return new Matrix(mul_matrix);
+    }
+    
+    /**
      * Multiplies two matrices.
      * The row dimension of the parameter must be equal to column dimension of the first one.
      * @param m Matrix object to multiply.
@@ -136,25 +155,6 @@ public class Matrix {
     }
     
     /**
-     * Multiplies a Fraction object to this matrix.
-     * @param value Fraction object
-     * @param simplify if true every component will be simplified after mul operation.
-     * @return matrix object, with value multiplied to each matrix component.
-     */
-    public Matrix mul(Fraction value, boolean simplify) {
-        Fraction [][] mul_matrix = new Fraction[row][col];
-        for(int row_counter = 0; row_counter < row; row_counter++)
-            for(int col_counter = 0; col_counter < col; col_counter++) {
-                Fraction f = value.mul(this.matrix[row_counter][col_counter]);
-                if(simplify)
-                    f.simplify();
-                mul_matrix[row_counter][col_counter] = f;
-            }
-                
-        return new Matrix(mul_matrix);
-    }
-    
-    /**
      * Calculate the transposed version of this Matrix.
      * @return Another Matrix object, rapresenting the transposed version of the source object.
      */
@@ -170,6 +170,11 @@ public class Matrix {
         return new Matrix(new_matrix);
     }
     
+    /**
+     * Returns a new Matrix object rapresenting the identity of a given dimenison.
+     * @param dimension Number of rows and columns of the identity matrix.
+     * @return A new Matrix object rapresenting the identity of the given dimension.
+     */
     public static Matrix identity(int dimension) {
         if(dimension < 0)
             throw new IllegalArgumentException("Dimension must be a positive number.");
