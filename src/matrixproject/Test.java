@@ -88,6 +88,8 @@ public class Test {
         Matrix mul = mul_m_a.mul(mul_m_b);
         System.out.println("Mul between two matrixes:\n" + mul);
         
+        //Transpose test
+        System.out.println("Transpose:\n" + mul_m_a.getTransposed());
         
     }
     

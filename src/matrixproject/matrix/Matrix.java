@@ -155,6 +155,22 @@ public class Matrix {
     }
     
     /**
+     * Calculate the transposed version of this Matrix.
+     * @return Another Matrix object, rapresenting the transposed version of the source object.
+     */
+    public Matrix getTransposed(){
+        Fraction[][] new_matrix = new Fraction[this.col][this.row];
+        
+        for(int row_counter = 0; row_counter < this.row; row_counter++) {
+            for(int col_counter = 0; col_counter < this.col; col_counter++) {
+                new_matrix[col_counter][row_counter] = new Fraction(matrix[row_counter][col_counter].getNumerator(), matrix[row_counter][col_counter].getDenominator());
+            }
+        }
+        
+        return new Matrix(new_matrix);
+    }
+    
+    /**
      * Checks if this matrix is square (row dimension equals to column dimension).
      * @return true if matrix is square, false otherwise.
      */
