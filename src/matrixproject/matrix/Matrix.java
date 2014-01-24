@@ -170,6 +170,21 @@ public class Matrix {
         return new Matrix(new_matrix);
     }
     
+    public static Matrix identity(int dimension) {
+        if(dimension < 0)
+            throw new IllegalArgumentException("Dimension must be a positive number.");
+        Fraction[][] new_matrix = new Fraction[dimension][dimension];
+        for(int row_counter = 0; row_counter < dimension; row_counter++) {
+            for(int col_counter = 0; col_counter < dimension; col_counter++) {
+                if(row_counter == col_counter)
+                    new_matrix[row_counter][col_counter] = new Fraction(1,1);
+                else
+                    new_matrix[row_counter][col_counter] = new Fraction(0,1);
+            }
+        }
+        return new Matrix(new_matrix);
+    }
+    
     /**
      * Checks if this matrix is square (row dimension equals to column dimension).
      * @return true if matrix is square, false otherwise.

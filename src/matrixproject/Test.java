@@ -91,6 +91,9 @@ public class Test {
         //Transpose test
         System.out.println("Transpose:\n" + mul_m_a.getTransposed());
         
+        //Identity test
+        System.out.println("Identity 3x3:\n" + Matrix.identity(3) + "\n\nIdentity 4x4:\n" + Matrix.identity(4));
+        
     }
     
 }
