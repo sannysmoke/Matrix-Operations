@@ -70,6 +70,25 @@ public class Test {
         
         //Mul test.
         System.out.println("Mul:\n" + new_matrix.mul(2));
+        
+        //Mul between two matrix test
+        Fraction[] mul_a_1 = {new Fraction(2,1), new Fraction(0,1), new Fraction(1,1)};
+        Fraction[] mul_a_2 = {new Fraction(3,1), new Fraction(1,1), new Fraction(0,1)};
+        Fraction[] mul_a_3 = {new Fraction(0,1), new Fraction(1,1), new Fraction(0,1)};
+        Fraction[] mul_a_4 = {new Fraction(0,1), new Fraction(0,1), new Fraction(2,1)};
+        Fraction[][] mul_a = {mul_a_1, mul_a_2, mul_a_3, mul_a_4};
+        Matrix mul_m_a = new Matrix(mul_a);
+        
+        Fraction[] mul_b_1 = {new Fraction(1,1), new Fraction(0,1), new Fraction(1,1), new Fraction(0,1)};
+        Fraction[] mul_b_2 = {new Fraction(2,1), new Fraction(1,1), new Fraction(0,1), new Fraction(1,1)};
+        Fraction[] mul_b_3 = {new Fraction(1,1), new Fraction(0,1), new Fraction(2,1), new Fraction(0,1)};
+        Fraction[][] mul_b = {mul_b_1, mul_b_2, mul_b_3};
+        Matrix mul_m_b = new Matrix(mul_b);
+        
+        Matrix mul = mul_m_a.mul(mul_m_b);
+        System.out.println("Mul between two matrixes:\n" + mul);
+        
+        
     }
     
 }

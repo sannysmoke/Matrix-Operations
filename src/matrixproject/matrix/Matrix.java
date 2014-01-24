@@ -113,6 +113,29 @@ public class Matrix {
     }
     
     /**
+     * Multiplies two matrices.
+     * The row dimension of the parameter must be equal to column dimension of the first one.
+     * @param m Matrix object to multiply.
+     * @return Another Matrix, containing mul values.
+     */
+    public Matrix mul(Matrix m) {
+        if(this.col != m.row)
+            throw new IllegalArgumentException("Rows dimension of matrix parameter must be the same with column dimension of this matrix.");
+        Fraction[][] new_matrix = new Fraction[this.row][m.col];
+        for(int row_counter = 0; row_counter < this.row; row_counter++) {
+            for (int col_counter = 0; col_counter < m.col; col_counter++) {
+                Fraction sum = new Fraction();
+                for(int counter = 0; counter < this.col; counter++) {
+                    sum = sum.sum(this.matrix[row_counter][counter].mul(m.matrix[counter][col_counter]));
+                    System.out.println("row:" + row_counter + " col:" + col_counter + " v:" + sum);
+                }
+                new_matrix[row_counter][col_counter] = sum;
+            }
+        }
+        return new Matrix(new_matrix);
+    }
+    
+    /**
      * Multiplies a Fraction object to this matrix.
      * @param value Fraction object
      * @param simplify if true every component will be simplified after mul operation.
