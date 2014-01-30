@@ -287,6 +287,15 @@ public class Matrix {
     }
     
     /**
+     * Clones this Matrix object.
+     * @return Another Matrix object, exact copy of this one.
+     */
+    @Override
+    public Matrix clone() {
+        return new Matrix(this.matrix);
+    }
+    
+    /**
      * ToString method
      * @return String that represents the matrix
      */    
