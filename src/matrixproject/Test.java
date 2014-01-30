@@ -88,11 +88,25 @@ public class Test {
         Matrix mul = mul_m_a.mul(mul_m_b);
         System.out.println("Mul between two matrixes:\n" + mul);
         
+        mul.switchRows(0, 1);
+        System.out.println("Switch between two lines:\n" + mul);
+        
+        mul.mulScalar(0, new Fraction(1, 2));
+        System.out.println("Multiply first row with 1/2:\n" + mul);
+        
+        mul.mulScalar(0, 2);
+        System.out.println("Multiply first row with 2:\n" + mul);   
+        
+        mul.addMultRow(1, 0, new Fraction(1, 2));
+        System.out.println("Multiply first row with 1/2 and sum this to the second row:\n" + mul); 
+        
         //Transpose test
         System.out.println("Transpose:\n" + mul_m_a.getTransposed());
         
         //Identity test
         System.out.println("Identity 3x3:\n" + Matrix.identity(3) + "\n\nIdentity 4x4:\n" + Matrix.identity(4));
+        
+        
         
     }
     

@@ -198,6 +198,71 @@ public class Matrix {
         return this.row == this.col;
     }
     
+    /* ---- OPERAZIONI ELEMENTARI ---- */
+    
+    /**
+     * Function that switch two rows
+     * @param i Index of first row to switch
+     * @param j Index of second row to switch
+     */
+    public void switchRows(int i, int j)
+    {
+        Fraction[] tmp = this.matrix[i];
+        this.matrix[i] = this.matrix[j];
+        this.matrix[j] = tmp;
+    }
+    
+    /**
+     * Function that multiply a row with Fraction
+     * @param i Index of row to be multiplied
+     * @param f Fraction to multiply row with
+     */
+    public void mulScalar(int i, Fraction f)
+    {
+        for(int j = 0; j < this.col; j++)
+        {
+            this.matrix[i][j] = this.matrix[i][j].mul(f);
+        }
+    }
+    
+    /**
+     * Function that multiply a row with int
+     * @param i Index of row to be multiplied
+     * @param value Integer to multiply row with
+     */
+    public void mulScalar(int i, int value)
+    {
+        this.mulScalar(i, new Fraction(value, 1));
+    }
+    
+    /**
+     * Fuction that sum the source row, multiplied with value, with destination row
+     * @param dest Destination row
+     * @param source Source row
+     * @param value Value to be multiplied with source
+     */
+    public void addMultRow(int dest, int source, Fraction value)
+    {
+        this.addMultRow(dest, source, value, true);
+    }
+    
+    /**
+     * Fuction that sum the source row, multiplied with value, with destination row
+     * @param dest Destination row
+     * @param source Source row
+     * @param value Value to be multiplied with source
+     * @param simplify If true simplify the destination row
+     */
+    public void addMultRow(int dest, int source, Fraction value, boolean simplify)
+    {
+        for(int j = 0; j < this.col; j++)
+        {
+            this.matrix[dest][j] = this.matrix[dest][j].sum(this.matrix[source][j].mul(value));
+            if(simplify)
+                this.matrix[dest][j].simplify();
+        }
+    }
+    
     /**
      * Checks if two Matrix objects are equals.
      * It uses Fraction object equals method, that return true when the simplified version of the fraction is the same,
