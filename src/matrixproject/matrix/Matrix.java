@@ -138,15 +138,17 @@ public class Matrix {
      * @return Another Matrix, containing mul values.
      */
     public Matrix mul(Matrix m) {
-        if(this.col != m.row)
-            throw new IllegalArgumentException("Rows dimension of matrix parameter must be the same with column dimension of this matrix.");
-        Fraction[][] new_matrix = new Fraction[this.row][m.col];
+
+        if(this.row != m.col)
+            throw new IllegalArgumentException("Column dimension of matrix parameter must be the same with row dimension of this matrix.");
+        
+        Fraction[][] new_matrix = new Fraction[this.row][m.col];            
+        
         for(int row_counter = 0; row_counter < this.row; row_counter++) {
             for (int col_counter = 0; col_counter < m.col; col_counter++) {
                 Fraction sum = new Fraction();
                 for(int counter = 0; counter < this.col; counter++) {
                     sum = sum.sum(this.matrix[row_counter][counter].mul(m.matrix[counter][col_counter]));
-                    System.out.println("row:" + row_counter + " col:" + col_counter + " v:" + sum);
                 }
                 new_matrix[row_counter][col_counter] = sum;
             }
