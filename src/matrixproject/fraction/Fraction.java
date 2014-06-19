@@ -155,7 +155,7 @@ public class Fraction {
     public void simplify()
     {
         int gcd = 0;
-        while(gcd != 1)
+        while(gcd != 1 && gcd != -1)
         {
             gcd = gcd(this.numerator, this.denominator);
             this.setNumerator(this.numerator/gcd);

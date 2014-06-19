@@ -266,6 +266,91 @@ public class Matrix {
     }
     
     /**
+     * Gauss method
+     * This function reduce a matrix with the Gauss algorithm
+     */
+    
+    public void gauss()
+    {
+        for(int index = 0; index < this.row-1; index++)
+        {
+            //search the column not null with index of row lowest
+            int indexRow = searchRowIndexLow(index);
+            
+            //if the row identified isn't the first, switch that with the first
+            if(indexRow != 0)
+            {
+                switchRows(indexRow, index);
+            }
+            
+            //Make null all elements under the pivot
+            int indexCol = searchColIndexNotNull(index);
+            
+            for(int i = index+1; i < this.row; i++)
+            {                
+                if(!this.matrix[i][indexCol].equals(new Fraction(0, 1)))
+                {
+                    Fraction delta = (this.matrix[i][indexCol].div(this.matrix[index][indexCol])).mul(new Fraction(-1, 1));
+                    this.addMultRow(i, index, delta);
+                }
+            }
+        }
+    }
+    
+    public int searchRowIndexLow(int first)
+    {        
+        for(int j = 0; j < this.col; j++)
+        {
+            for(int i = first; i < this.row; i++)
+            {
+                if(!this.matrix[i][j].equals(new Fraction(0, 1)))
+                {
+                    return i;
+                }
+            }
+        }
+        
+        return 0;
+    }
+    
+    /**
+     * Function that returns the first column not null of the specified row
+     * @param i Row to check
+     * @return Return the first column not null of the specified row
+     */
+    public int searchColIndexNotNull(int i)
+    {        
+        for(int j = 0; j < this.col; j++)
+        {
+            if(!this.matrix[i][j].equals(new Fraction(0, 1)))
+            {
+                return j;
+            }       
+        }
+        
+        return 0;
+    }
+    
+    /**
+     * Function that check if the matrix is null
+     * @return Return true if the matrix is null, false otherwise
+     */
+    public boolean isNull()
+    {
+        for(int i = 0; i < this.col; i++)
+        {
+            for(int j = 0; j < this.row; j++)
+            {
+                if(!this.matrix[i][j].equals(new Fraction()))
+                {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+    
+    /**
      * Checks if two Matrix objects are equals.
      * It uses Fraction object equals method, that return true when the simplified version of the fraction is the same,
      * so it's not a strict confrontation between numerator and denominator.

@@ -107,6 +107,23 @@ public class Test {
         System.out.println("Identity 3x3:\n" + Matrix.identity(3) + "\n\nIdentity 4x4:\n" + Matrix.identity(4));
         
         
+        //Gauss test
+        
+        System.out.println("\n\n------------GAUSS TEST------------\n\n");
+        
+        Fraction[] gauss1 = {new Fraction(2,1), new Fraction(1,1), new Fraction(0,1), new Fraction(4,1)};
+        Fraction[] gauss2 = {new Fraction(1,1), new Fraction(-1,1), new Fraction(1,1), new Fraction(0,1)};
+        Fraction[] gauss3 = {new Fraction(2,1), new Fraction(1,1), new Fraction(-1,1), new Fraction(1,1)};
+        Fraction[][] gauss = { gauss1, gauss2, gauss3 };
+        
+        Matrix gaussM = new Matrix(gauss);
+        
+        System.out.println("Source matrix:\n" + gaussM);
+        
+        gaussM.gauss();
+        
+        System.out.println("\n\n\"Gaussed\" matrix:\n" + gaussM);
+        
         
     }
     
