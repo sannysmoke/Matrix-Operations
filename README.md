@@ -16,5 +16,5 @@ javac matrixproject/*.java
 
 To execute test class, run:
 ```
-java matrixproject/Test
+java matrixproject.Test
 ```
